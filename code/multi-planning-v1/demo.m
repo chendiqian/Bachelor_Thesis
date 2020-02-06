@@ -1,0 +1,12 @@
+names = {'x';'y';'z'};
+model.A = sparse([1 2 3; 1 1 0]);
+model.obj = [1 1 2];
+model.rhs = [4; 1];
+model.sense = '<>';
+model.vtype = 'B';
+model.modelsense = 'max';
+model.varnames = names;
+gurobi_write(model, 'mip1.lp');
+params.outputflag = 0;
+result = gurobi(model, params);
+disp(result);
